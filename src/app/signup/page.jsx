@@ -19,7 +19,6 @@ const SignupPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Frontend validation
         if (!username || !email || !password) {
             toast.error("Oops! Please complete the form first.", { theme: "colored" });
             return;
@@ -50,7 +49,6 @@ const SignupPage = () => {
                 toast.error(data.error || "Signup failed", { theme: "colored" });
             }
         } catch (err) {
-            console.error(err);
             toast.error("Something went wrong. Please try again later.", { theme: "colored" });
         }
     };

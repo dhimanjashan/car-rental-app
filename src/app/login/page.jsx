@@ -20,6 +20,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
   const { setIsLoggedIn } = useUser();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "email") setEmail(value);
@@ -41,7 +42,6 @@ const LoginPage = () => {
       const data = await response.json();
 
       if (response.status === 200) {
-        // ✅ Show success message
         toast.success('You’ve logged in successfully.', {
           autoClose: 3000,
           hideProgressBar: false,
@@ -51,19 +51,14 @@ const LoginPage = () => {
           theme: 'colored',
         });
 
-        // ✅ Save token to localStorage
         localStorage.setItem("myToken", data.token);
-        setIsLoggedIn(true); // from useUser()
-        // ✅ Dispatch custom authChange event
+        setIsLoggedIn(true);
         window.dispatchEvent(new CustomEvent("authChange", {
           detail: { login: true },
         }));
 
-        // ✅ Clear inputs
         setEmail("");
         setPassword("");
-
-        // ✅ Optional: redirect to home or dashboard
         router.push("/");
       }
 
@@ -79,18 +74,18 @@ const LoginPage = () => {
       }
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
-      console.error("Login error:", error);
     }
   };
 
   useEffect(() => {
     window.scrollTo(0, 1);
   }, []);
+
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize(); // run on mount
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -98,7 +93,6 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="flex flex-col md:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden max-w-5xl w-full mb-10 border-2 border-amber-300">
-        {/* Left - Form Section */}
         <div className="w-full md:w-1/2 bg-gray-900 text-white p-10 space-y-8">
           <h2 className="text-3xl font-bold text-yellow-400">
             <span className='text-white'>Log into</span> RentRider
@@ -154,23 +148,26 @@ const LoginPage = () => {
           </div>
         </div>
 
-        {/* Right - Branding Section */}
         <div className="w-full md:w-1/2 bg-yellow-400 text-white flex flex-col items-center justify-center p-8">
           <Icon iconNode={steeringWheel} className="text-black w-10 h-10 mb-4" />
           <h1 className={`${pacifico.className} text-white text-4xl mb-6`}>RentRider</h1>
-         {!isMobile?<Image
-            src="/boy.png"
-            width={500}
-            height={300}
-            alt="Boy Illustration"
-            className="object-contain drop-shadow-xl"
-          />:<Image
-          src="/boy2.png"
-          width={250}
-          height={80}
-          alt="Boy Illustration"
-          className="object-contain drop-shadow-xl"
-        />}
+          {!isMobile ? (
+            <Image
+              src="/boy.png"
+              width={500}
+              height={300}
+              alt="Boy Illustration"
+              className="object-contain drop-shadow-xl"
+            />
+          ) : (
+            <Image
+              src="/boy2.png"
+              width={250}
+              height={80}
+              alt="Boy Illustration"
+              className="object-contain drop-shadow-xl"
+            />
+          )}
         </div>
       </div>
     </div>

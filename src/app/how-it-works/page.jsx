@@ -111,7 +111,6 @@ const HowRentRiderWorks = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
       <div className="shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-12">
           <div className="text-center">
@@ -125,23 +124,17 @@ const HowRentRiderWorks = () => {
         </div>
       </div>
 
-      {/* Steps Section */}
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="space-y-12">
           {steps.map((step, index) => (
             <div key={index} className="relative">
-              {/* Connection Line */}
               {index < steps.length - 1 && (
                 <div className="absolute left-8 top-20 w-0.5 h-24 bg-gray-200 z-0"></div>
               )}
-              
               <div className="flex items-start space-x-8">
-                {/* Step Icon */}
                 <div className={`relative z-10 ${step.color} rounded-full p-4 text-white flex-shrink-0`}>
                   {step.icon}
                 </div>
-                
-                {/* Step Content */}
                 <div className="flex-1">
                   <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
                     <div className="flex items-center justify-between mb-6">
@@ -158,16 +151,12 @@ const HowRentRiderWorks = () => {
                           {step.description}
                         </p>
                       </div>
-                      
-                      {/* Arrow for non-last steps */}
                       {index < steps.length - 1 && (
                         <div className="hidden md:block">
                           <ArrowRight className="w-8 h-8 text-gray-300" />
                         </div>
                       )}
                     </div>
-                    
-                    {/* Step Details */}
                     <div className={`${step.lightColor} rounded-xl p-6`}>
                       <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {step.details.map((detail, detailIndex) => (
@@ -186,7 +175,6 @@ const HowRentRiderWorks = () => {
         </div>
       </div>
 
-      {/* Features Section */}
       <div className="bg-white py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -197,7 +185,6 @@ const HowRentRiderWorks = () => {
               Experience the difference with our premium car rental service
             </p>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="text-center p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
@@ -216,7 +203,6 @@ const HowRentRiderWorks = () => {
         </div>
       </div>
 
-      {/* CTA Section */}
       <div className="bg-gradient-to-r from-yellow-500 to-orange-500 py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
@@ -230,7 +216,7 @@ const HowRentRiderWorks = () => {
               <a href='/signup'>Create Account Now</a>
             </button>
             <button className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-yellow-600 transition-colors hover:cursor-pointer">
-            <a href='/allCars'> Browse Cars</a>
+              <a href='/allCars'>Browse Cars</a>
             </button>
           </div>
         </div>

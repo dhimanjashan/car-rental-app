@@ -6,7 +6,7 @@ const CarSchema = new mongoose.Schema({
     transmission: { type: String, required: true },
     price: { type: Number, required: true },
     vehicle: { type: String, required: true },
-    image: { type: String, required: true } 
+    image: { type: String, required: true }
 })
 
 export default mongoose.models.Car || mongoose.model('Car', CarSchema);

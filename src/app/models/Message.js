@@ -12,7 +12,7 @@ const messageSchema = new mongoose.Schema({
   messages: [
     {
       content: String,
-      
+
       date: {
         type: String,
         default: () => new Date().toISOString().split("T")[0],

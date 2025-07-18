@@ -8,12 +8,11 @@ export async function GET(req) {
   const userId = searchParams.get("userId");
 
   if (!userId) {
-    return Response.json({ error: "Missing userId" }, { status: 400 });
+    return Response.json({ error: "User ID is required." }, { status: 400 });
   }
 
   const now = new Date();
 
-  // ✅ Filter by userId
   const countCurrentRentals = await Rental.countDocuments({
     userId,
     rentalStatus: "active",

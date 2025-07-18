@@ -13,13 +13,11 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-gray-900 to-gray-700 text-white">
       <div className="max-w-screen-xl mx-auto px-6 py-14">
-        {/* Logo Section */}
         <div className="flex items-center mb-10">
           <Icon iconNode={steeringWheel} className="size-16 text-yellow-300" />
           <h1 className={`text-5xl ml-4 ${pacifico.className} text-white`}>RentRider</h1>
         </div>
 
-        {/* Grid Links */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-10">
           <div>
             <h2 className="font-bold text-xl mb-3">About</h2>
@@ -57,8 +55,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
-        <p className="text-center  text-lg text-gray-300">
+        <p className="text-center text-lg text-gray-300">
           &copy; 2025 RentRider. Made with ❤️ & 🧠. All rights reserved.
         </p>
       </div>

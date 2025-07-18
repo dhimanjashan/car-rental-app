@@ -3,15 +3,18 @@ import React from "react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { useUser } from '../context/UserContext';
 import { toast } from 'react-hot-toast';
+
 export default function LogoutModal({ show, onCancel, onConfirm }) {
   const { setIsLoggedIn } = useUser();
   if (!show) return null;
+
   const handleLogout = () => {
-    toast.success('You’ve log out successfully.')
+    toast.success('You’ve log out successfully.');
     localStorage.removeItem('myToken');
-    setIsLoggedIn(false); // from useUser()
-    onConfirm()
-  }
+    setIsLoggedIn(false);
+    onConfirm();
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
       <div className="bg-white/10 border border-white/30 rounded-2xl p-8 shadow-2xl backdrop-blur-lg w-[90%] max-w-md text-center text-white animate-fade-in-up">

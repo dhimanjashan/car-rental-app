@@ -28,5 +28,5 @@ export async function POST(req) {
 
   await newUser.save();
 
-  return NextResponse.json({ message: 'User stored successfully.' }, { status: 200 });
+  return NextResponse.json({ message: 'User registered successfully.' }, { status: 200 });
 }

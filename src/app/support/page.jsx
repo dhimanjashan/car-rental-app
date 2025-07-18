@@ -1,20 +1,17 @@
-"use client"
-import React from 'react'
-import Sidebar from "../components/sidebar"
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { 
-  MessageCircle, 
-  Phone, 
-  Mail, 
-  Clock, 
-  HelpCircle, 
-  FileText, 
-  Users, 
-  Zap,
+"use client";
+import React from 'react';
+import Sidebar from "../components/sidebar";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import {
+  MessageCircle,
+  Phone,
+  Mail,
+  Clock,
+  HelpCircle,
   ChevronRight,
   Star
-} from 'lucide-react'
+} from 'lucide-react';
 
 const SupportPage = () => {
   const contactOptions = [
@@ -49,9 +46,8 @@ const SupportPage = () => {
       icon: <HelpCircle className="w-6 h-6" />,
       title: "Booking Issues",
       description: "Problems with making or managing bookings",
-      slug:"bookingIssues"
+      slug: "bookingIssues"
     }
-    
   ];
 
   const faqs = [
@@ -72,19 +68,20 @@ const SupportPage = () => {
       answer: "Late returns incur additional charges. Please notify us immediately if you'll be returning late."
     }
   ];
+
   const router = useRouter();
 
   const handleQuickHelpClick = (item) => {
-    router.push(`/${item.slug}`); // e.g., /help/getting-started
+    router.push(`/${item.slug}`);
   };
+
   return (
     <div className="flex min-h-screen">
       <aside className="w-64 bg-white text-black shadow-lg">
-                <Sidebar />
-            </aside>
-      
+        <Sidebar />
+      </aside>
+
       <main className="flex-1 p-8">
-        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4">
             How can we <span className="text-yellow-500">help</span> you?
@@ -94,7 +91,6 @@ const SupportPage = () => {
           </p>
         </div>
 
-        {/* Contact Options */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Get in Touch</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -125,31 +121,32 @@ const SupportPage = () => {
           </div>
         </section>
 
-       {/* Quick Help */}
-<section className="mb-16">
-  <h2 className="text-3xl font-bold mb-8 text-center">Quick Help</h2>
-  <div className="flex justify-center">
-    <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow cursor-pointer group max-w-md w-full" onClick={() => handleQuickHelpClick(quickHelp[0], 0)}>
-      <div className="flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-lg mb-6 group-hover:bg-yellow-200 transition-colors mx-auto">
-        <div className="text-yellow-600 text-xl">
-          {quickHelp[0].icon}
-        </div>
-      </div>
-      <h3 className="text-xl font-semibold text-gray-900 mb-3 text-center">
-        {quickHelp[0].title}
-      </h3>
-      <p className="text-gray-600 text-center mb-6">
-        {quickHelp[0].description}
-      </p>
-      <div className="flex items-center justify-center text-yellow-600 group-hover:text-yellow-700">
-        <span className="text-sm font-medium">Learn more</span>
-        <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-      </div>
-    </div>
-  </div>
-</section>
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-center">Quick Help</h2>
+          <div className="flex justify-center">
+            <div
+              className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow cursor-pointer group max-w-md w-full"
+              onClick={() => handleQuickHelpClick(quickHelp[0], 0)}
+            >
+              <div className="flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-lg mb-6 group-hover:bg-yellow-200 transition-colors mx-auto">
+                <div className="text-yellow-600 text-xl">
+                  {quickHelp[0].icon}
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 text-center">
+                {quickHelp[0].title}
+              </h3>
+              <p className="text-gray-600 text-center mb-6">
+                {quickHelp[0].description}
+              </p>
+              <div className="flex items-center justify-center text-yellow-600 group-hover:text-yellow-700">
+                <span className="text-sm font-medium">Learn more</span>
+                <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </div>
+        </section>
 
-        {/* FAQ Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
           <div className="max-w-4xl mx-auto">
@@ -175,7 +172,6 @@ const SupportPage = () => {
           </div>
         </section>
 
-        {/* Emergency Contact */}
         <section className="mb-16">
           <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-2xl p-8 text-white text-center">
             <h2 className="text-3xl font-bold mb-4">Emergency Support</h2>
@@ -183,7 +179,6 @@ const SupportPage = () => {
               Need immediate assistance? Our emergency support is available 24/7
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-               
               <Link href="/contact">
                 <button className="bg-red-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-800 transition-colors hover:cursor-pointer">
                   Emergency Chat
@@ -193,7 +188,6 @@ const SupportPage = () => {
           </div>
         </section>
 
-        {/* Customer Satisfaction */}
         <section className="text-center">
           <div className="bg-white rounded-2xl p-8 shadow-lg">
             <div className="flex items-center justify-center mb-4">
@@ -225,7 +219,7 @@ const SupportPage = () => {
         </section>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default SupportPage
+export default SupportPage;

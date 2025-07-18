@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 
 const ContactPage = () => {
@@ -12,7 +12,6 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, message } = formData;
-    // Basic validation
     if (!name || !email || !message) {
       alert("Please fill in all fields.");
       return;
@@ -28,13 +27,11 @@ const ContactPage = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success("Message sent successfully!");
-        // Reset form
         setFormData({ name: "", email: "", message: "" });
       } else {
         toast.error(data.error || "Something went wrong.");
       }
     } catch (error) {
-      console.error("Submit error:", error);
       toast.error("Failed to send message. Please try again later.");
     }
   };
@@ -46,7 +43,6 @@ const ContactPage = () => {
 
   return (
     <div className=" pb-20 px-6 md:px-20">
-      {/* Header */}
       <div className="text-center pt-20 pb-10 max-w-3xl mx-auto">
         <h1 className="text-5xl md:text-6xl font-bold text-yellow-300 mb-6">
           Contact Us
@@ -57,9 +53,7 @@ const ContactPage = () => {
         </p>
       </div>
 
-      {/* Grid Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-        {/* Contact Info */}
         <div className="bg-gray-800 p-8 rounded-2xl shadow-md">
           <h2 className="text-3xl font-semibold mb-8 text-white">
             Contact Information
@@ -81,7 +75,6 @@ const ContactPage = () => {
           </div>
         </div>
 
-        {/* Business Hours */}
         <div className="bg-gray-800 p-8 rounded-2xl shadow-md">
           <h2 className="text-3xl font-semibold mb-8 text-white">
             Business Hours
@@ -93,7 +86,6 @@ const ContactPage = () => {
           </div>
         </div>
 
-        {/* Contact Form */}
         <form className="bg-gray-800 p-8 rounded-2xl shadow-md space-y-6">
           <h2 className="text-3xl font-semibold text-white mb-4">
             Send a Message

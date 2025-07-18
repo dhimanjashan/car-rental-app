@@ -30,12 +30,10 @@ const AllCars = () => {
 
   return (
     <div className="min-h-screen py-16 px-4 md:px-10">
-      {/* Heading */}
       <h2 className="text-yellow-300 text-4xl md:text-5xl font-bold text-center mb-12 drop-shadow-lg">
         Find Your Perfect Ride
       </h2>
 
-      {/* Filter */}
       <div className="bg-zinc-800 border border-zinc-700 rounded-2xl max-w-3xl mx-auto px-6 py-8 shadow-2xl mb-16">
         <div className="flex flex-col sm:flex-row items-center gap-6">
           <input
@@ -55,7 +53,6 @@ const AllCars = () => {
         </div>
       </div>
 
-      {/* Cars */}
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto">
         {filteredCars.length === 0 ? (
           <p className="text-center col-span-full text-gray-400 text-lg">
@@ -95,7 +92,6 @@ const AllCars = () => {
         )}
       </div>
 
-      {/* Load More */}
       {filteredCars.length > 8 && (
         <div className="flex justify-center mt-12">
           {visibleCount < filteredCars.length ? (

@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { SlCalender } from "react-icons/sl";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { LuLaptopMinimalCheck } from "react-icons/lu";
-import { FaCarAlt, FaHome, FaMapMarkerAlt } from "react-icons/fa";
+import { FaCarAlt, FaHome } from "react-icons/fa";
 import { MdGpsFixed } from "react-icons/md";
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
@@ -44,9 +43,6 @@ const services = [
 
 const page = () => {
     const router = useRouter();
-    // const handleSearch = () => {
-    //     router.push("/car")
-    // }
     const [carName, setcarName] = useState("");
     const [carData, setcarData] = useState("");
 
@@ -54,27 +50,28 @@ const page = () => {
         if (carData) {
             router.push(`/car?slug=${carData.searchCar.slug}`);
         }
-    }, [carData])
+    }, [carData]);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name == "carname") {
             setcarName(value);
         }
-    }
+    };
+
     const handleSearch = (e) => {
         e.preventDefault();
         const fetchCar = async () => {
             try {
                 const response = await fetch(`/api/searchCar?carname=${carName}`);
                 const data = await response.json();
-                setcarData(data)
-            } catch (error) {
-                console.error("Failed to fetch car details", error);
-            }
+                setcarData(data);
+            } catch (error) { }
         };
 
         fetchCar();
-    }
+    };
+
     return (
         <div className="px-4 md:px-16 py-16">
             <h1 className="text-5xl md:text-6xl font-bold text-center text-yellow-300 mb-6">SERVICES</h1>
@@ -112,8 +109,6 @@ const page = () => {
                 <h2 className="text-xl md:text-2xl font-bold mb-6 text-center">Find Your Car</h2>
 
                 <div className="flex flex-col md:flex-row items-stretch gap-4">
-
-                    {/* Car Name Input */}
                     <div className="flex-1 relative">
                         <input
                             type="text"
@@ -125,7 +120,6 @@ const page = () => {
                         />
                     </div>
 
-                    {/* Search Button */}
                     <div className="md:w-auto">
                         <button
                             onClick={handleSearch}
@@ -134,10 +128,7 @@ const page = () => {
                             Search
                         </button>
                     </div>
-
                 </div>
-
-
             </div>
         </div>
     );

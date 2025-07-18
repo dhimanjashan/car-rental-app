@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Search, MessageCircle, Phone, Mail, HelpCircle } from 'lucide-react';
+import { ChevronDown, ChevronUp, Search, Mail, HelpCircle } from 'lucide-react';
 
 const FAQPage = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -98,7 +98,7 @@ const FAQPage = () => {
   const filteredFAQs = faqs.map(category => ({
     ...category,
     questions: category.questions.filter(
-      faq => 
+      faq =>
         faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
         faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
     )
@@ -106,21 +106,16 @@ const FAQPage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <div className=" shadow-sm">
+      <div className="shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-8">
           <div className="text-center">
-            <div className="flex justify-center mb-6">
-             
-            </div>
+            <div className="flex justify-center mb-6"></div>
             <h1 className="text-4xl font-bold mb-4">
               Frequently Asked Questions
             </h1>
             <p className="text-lg text-gray-400 mb-8">
               Find answers to common questions about our car rental service
             </p>
-            
-            {/* Search Bar */}
             <div className="relative max-w-2xl mx-auto">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -135,7 +130,6 @@ const FAQPage = () => {
         </div>
       </div>
 
-      {/* FAQ Content */}
       <div className="max-w-4xl mx-auto px-4 py-12">
         {filteredFAQs.length === 0 ? (
           <div className="text-center py-12">
@@ -153,7 +147,7 @@ const FAQPage = () => {
                     {category.category}
                   </h2>
                 </div>
-                
+
                 <div className="divide-y divide-gray-100">
                   {category.questions.map((faq, questionIndex) => {
                     const isActive = activeIndex === `${categoryIndex}-${questionIndex}`;
@@ -172,7 +166,7 @@ const FAQPage = () => {
                             <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0" />
                           )}
                         </button>
-                        
+
                         {isActive && (
                           <div className="mt-4 px-4">
                             <p className="text-gray-600 leading-relaxed">
@@ -190,7 +184,6 @@ const FAQPage = () => {
         )}
       </div>
 
-      {/* Contact Support Section */}
       <div className="bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-4 py-16">
           <div className="text-center mb-12">
@@ -201,17 +194,15 @@ const FAQPage = () => {
               Our support team is here to help you 24/7
             </p>
           </div>
-         
-            
-            <div className="text-center p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
-              <Mail className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Support</h3>
-              <p className="text-gray-600 mb-4">Send us a detailed message</p>
-              <button className="text-yellow-600 hover:text-yellow-700 font-medium hover:cursor-pointer">
+          <div className="text-center p-6 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+            <Mail className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Support</h3>
+            <p className="text-gray-600 mb-4">Send us a detailed message</p>
+            <button className="text-yellow-600 hover:text-yellow-700 font-medium hover:cursor-pointer">
               <a href="mailto:support@rentrider.com">Email Support</a>
-              </button>
-            </div>
+            </button>
           </div>
+        </div>
       </div>
     </div>
   );

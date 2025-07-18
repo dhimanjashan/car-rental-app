@@ -2,19 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import NextTopLoader from 'nextjs-toploader';
-
 export default function ConditionalTopLoader() {
   const [shouldRender, setShouldRender] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Detect screen width
     const isMobileDevice = window.innerWidth < 768;
     setIsMobile(isMobileDevice);
-    setShouldRender(true); // Only render after detection
+    setShouldRender(true);
   }, []);
 
-  if (!shouldRender) return null; // Avoid rendering until we know the device
+  if (!shouldRender) return null;
 
   return (
     <NextTopLoader

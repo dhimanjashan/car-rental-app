@@ -1,4 +1,3 @@
-// models/Rental.ts
 import mongoose, { Document, Schema } from "mongoose";
 
 interface RentalType extends Document {

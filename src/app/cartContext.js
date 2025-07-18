@@ -14,11 +14,7 @@ export const CartProvider = ({ children }) => {
     const router = useRouter();
     const [showLogout, setShowLogout] = useState(false);
     const handleLogout = () => {
-        // Clear tokens / logout logic
         localStorage.removeItem("myToken");
-        // setuserLogin(!userLogin);
-        // setuser({ value: null });
-        // setkey(Math.random());
         setShowLogout(false);
         router.push("/");
     };

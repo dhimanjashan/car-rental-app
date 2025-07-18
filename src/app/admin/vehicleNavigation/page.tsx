@@ -6,32 +6,25 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L, { LatLngExpression } from 'leaflet';
 
-// Fix icon issue
 delete (L.Icon.Default as any).prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: '/leaflet/clipart38818.png',
+  iconRetinaUrl: '/leaflet/location2.png',
   iconUrl: '/leaflet/location.png',
   shadowUrl: '/leaflet/clipart38818.png',
 });
 
 const VehicleNavigationPage = () => {
-  // Example location (Delhi)
   const vehicleLocation: LatLngExpression = { lat: 30.1306, lng: 75.8014 };
 
   return (
     <div className="flex min-h-screen ">
-      {/* Sidebar */}
       <aside className="w-64 bg-white text-black shadow-lg">
         <Sidebar />
       </aside>
-
-      {/* Main Content */}
       <main className="flex-1 p-6 md:p-10 overflow-y-auto">
         <h1 className="text-yellow-400 underline text-center text-3xl font-bold mb-8">
           GPS View
         </h1>
-
-        {/* Map Container */}
         <div className="h-[70vh] w-full rounded-xl overflow-hidden shadow-lg border border-zinc-800">
           <MapContainer
             center={vehicleLocation}

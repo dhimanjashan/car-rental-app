@@ -9,37 +9,34 @@ export async function PUT(req) {
     const slug = searchParams.get("slug");
 
     if (!slug) {
-      return new Response(JSON.stringify({ error: "Missing slug" }), {
+      return new Response(JSON.stringify({ error: "Slug is required." }), {
         status: 400,
         headers: { "Content-Type": "application/json" },
       });
     }
 
-    // Remove booking object with matching slug from the bookings array
     const updatedCar = await BookCar.findOneAndUpdate(
-      { "bookings.slug": slug }, // Find where bookings has this slug
-      { $pull: { bookings: { slug } } }, // Pull it out of the array
-      { new: true } // Return the updated document
+      { "bookings.slug": slug },
+      { $pull: { bookings: { slug } } },
+      { new: true }
     );
 
     if (!updatedCar) {
-      return new Response(JSON.stringify({ error: "Booking not found" }), {
+      return new Response(JSON.stringify({ error: "Booking not found." }), {
         status: 404,
         headers: { "Content-Type": "application/json" },
       });
     }
 
-    return new Response(JSON.stringify({
-      message: "Booking removed successfully",
-      updatedCar
-    }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
-
+    return new Response(
+      JSON.stringify({ message: "Booking deleted successfully.", updatedCar }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   } catch (error) {
-    console.error("❌ Error removing booking:", error);
-    return new Response(JSON.stringify({ error: "Failed to remove booking" }), {
+    return new Response(JSON.stringify({ error: "Failed to delete booking." }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });

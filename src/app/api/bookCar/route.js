@@ -20,28 +20,25 @@ export async function POST(req) {
       price,
     } = body;
 
-    // 1️⃣ Check if user exists in the `User` model
     const user = await User.findOne({ email });
     if (!user) {
       return NextResponse.json(
-        { error: "User not found. Please register first." },
+        { error: "User not found. Please create an account." },
         { status: 404 }
       );
     }
 
-    // 2️⃣ Check if a BookCar record already exists for this email
     let bookCar = await BookCar.findOne({ email });
 
     if (bookCar) {
       const alreadyBooked = bookCar.bookings.find((b) => b.slug === slug);
       if (alreadyBooked) {
         return NextResponse.json(
-          { message: "This car is already booked." },
+          { message: "This car is already booked for your account." },
           { status: 200 }
         );
       }
 
-      // Add booking to existing user's bookings
       bookCar.bookings.push({
         slug,
         pickupdate,
@@ -54,12 +51,11 @@ export async function POST(req) {
       await bookCar.save();
 
       return NextResponse.json(
-        { message: "New car booked successfully." },
+        { message: "Booking added successfully." },
         { status: 200 }
       );
     }
 
-    // 3️⃣ If BookCar entry doesn't exist, create a new one
     const newBooking = new BookCar({
       username,
       email,
@@ -72,14 +68,16 @@ export async function POST(req) {
     await newBooking.save();
 
     return NextResponse.json(
-      { message: "Booked car successfully." },
+      { message: "Car booked successfully." },
       { status: 200 }
     );
   } catch (error) {
-    console.error("❌ Error in booking car:", error);
-    return new Response(JSON.stringify({ error: "Failed to book car" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ error: "Something went wrong while booking." }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 }

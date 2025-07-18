@@ -14,7 +14,7 @@ export async function GET(req) {
         }
 
         const searchCar = await Car.findOne({
-            name: { $regex: name, $options: "i" }, // case-insensitive
+            name: { $regex: name, $options: "i" },
         });
 
         if (!searchCar) {

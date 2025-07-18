@@ -23,5 +23,4 @@ const userSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-// Avoid recompilation errors in Next.js
 export default mongoose.models.User || mongoose.model('User', userSchema);

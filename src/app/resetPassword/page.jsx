@@ -9,7 +9,7 @@ const ForgotPasswordPage = () => {
   const router = useRouter();
 
   const [isMobile, setIsMobile] = useState(false);
-  const [step, setStep] = useState(1); // Step 1: Email, 2: OTP, 3: New Password
+  const [step, setStep] = useState(1);
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -20,35 +20,32 @@ const ForgotPasswordPage = () => {
   }, []);
 
   const handleSubmitEmail = async () => {
-    console.log(email)
     try {
       const res = await fetch('/api/send-otp', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })
       });
-  
+
       let data;
-      
+
       try {
         data = await res.json();
-        console.log(data)
       } catch (err) {
         return toast.error("Unexpected response. Try again.");
       }
-  
+
       if (res.ok) {
         toast.success("OTP sent to your email");
         setStep(2);
       } else {
         toast.error(data?.error || "Something went wrong.");
       }
-  
+
     } catch (error) {
       toast.error("Network error. Try again later.");
     }
   };
-  
 
   const handleVerifyOTP = async () => {
     if (!otp) return toast.error("Enter OTP");
@@ -166,7 +163,6 @@ const ForgotPasswordPage = () => {
           </Link>
         </div>
 
-        {/* Illustrations */}
         {!isMobile && (
           <div className="flex flex-col absolute md:static md:-ml-10 mt-10 md:mt-0 items-center">
             <Image src="/key.png" priority width={300} height={300} alt="Key" className="-mb-20" />

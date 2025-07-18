@@ -31,19 +31,15 @@ const VehiclePage = () => {
 
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar */}
       <aside className="w-64 bg-white text-black shadow-lg">
-                <Sidebar />
-            </aside>
+        <Sidebar />
+      </aside>
 
-      {/* Main Content */}
       <main className="flex-1 p-6 md:p-10 overflow-y-auto">
-        {/* Heading */}
         <h1 className="text-yellow-400 underline text-4xl font-bold text-center mb-12 drop-shadow">
           Available Vehicles
         </h1>
 
-        {/* Filter/Search */}
         <div className="bg-zinc-800 border border-zinc-700 rounded-2xl max-w-4xl mx-auto px-6 py-8 shadow-xl mb-16">
           <div className="flex flex-col sm:flex-row items-center gap-6">
             <input
@@ -63,7 +59,6 @@ const VehiclePage = () => {
           </div>
         </div>
 
-        {/* Vehicle Cards Grid */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto">
           {filteredCars.length === 0 ? (
             <p className="text-center col-span-full text-gray-400 text-lg">
@@ -110,7 +105,6 @@ const VehiclePage = () => {
           )}
         </div>
 
-        {/* Load More */}
         {filteredCars.length > 8 && (
           <div className="flex justify-center mt-12">
             {visibleCount < filteredCars.length ? (

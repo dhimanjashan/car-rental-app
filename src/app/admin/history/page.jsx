@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from 'react';
-import Sidebar from "../../components/sidebar"
-import Image from 'next/image'
-import { Calendar, Car, Clock, Filter, Search } from 'lucide-react';
+import Sidebar from "../../components/sidebar";
+import Image from 'next/image';
+import { Calendar, Car, Filter, Search } from 'lucide-react';
 
 const HistoryPage = () => {
   const [bookedcar, setBookedcar] = useState(null);
@@ -20,7 +20,6 @@ const HistoryPage = () => {
 
   useEffect(() => {
     if (!token) return;
-    
     const fetchUserData = async () => {
       try {
         const response = await fetch("/api/getUser", {
@@ -32,27 +31,20 @@ const HistoryPage = () => {
         });
         const data = await response.json();
         setUserData(data.id);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
+      } catch (error) { }
     };
-
     fetchUserData();
   }, [token]);
 
   useEffect(() => {
     if (!userData) return;
-    
     const fetchBookedCars = async () => {
       try {
         const response = await fetch(`/api/getRentalCars?userId=${userData}`);
         const data = await response.json();
         setBookedcar(data.car || []);
-      } catch (error) {
-        console.error("Failed to fetch booked cars:", error);
-      }
+      } catch (error) { }
     };
-    
     fetchBookedCars();
   }, [userData]);
 
@@ -61,7 +53,6 @@ const HistoryPage = () => {
       setLoading(false);
       return;
     }
-  
     const fetchAllCars = async () => {
       try {
         setLoading(true);
@@ -80,13 +71,10 @@ const HistoryPage = () => {
           })
         );
         setCarData(cars);
-      } catch (error) {
-        console.error("Failed to fetch all car details", error);
-      } finally {
+      } catch (error) { } finally {
         setLoading(false);
       }
     };
-  
     fetchAllCars();
   }, [bookedcar]);
 
@@ -111,8 +99,8 @@ const HistoryPage = () => {
   };
 
   const filteredCars = carData?.filter(car => {
-    const matchesSearch = car.name?.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         car.vehicle?.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = car.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      car.vehicle?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesFilter = filterStatus === 'all' || car.rentalStatus === filterStatus;
     return matchesSearch && matchesFilter;
   }) || [];
@@ -152,18 +140,16 @@ const HistoryPage = () => {
 
   return (
     <div className="flex min-h-screen">
-       <aside className="w-64 bg-white text-black shadow-lg">
-                <Sidebar />
-            </aside>
-      
+      <aside className="w-64 bg-white text-black shadow-lg">
+        <Sidebar />
+      </aside>
+
       <main className='flex-1 p-8'>
-        {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2 text-yellow-400 underline text-center">Rental History</h1>
           <p className="text-gray-500 text-center">View and manage your past car rentals</p>
         </div>
 
-        {/* Search and Filter Bar */}
         <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1 relative">
@@ -178,7 +164,7 @@ const HistoryPage = () => {
             </div>
             <div className="flex items-center gap-2">
               <Filter className="text-gray-400 w-5 h-5" />
-              <select 
+              <select
                 className="px-4 py-2 text-black border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
@@ -192,7 +178,6 @@ const HistoryPage = () => {
           </div>
         </div>
 
-        {/* Content */}
         {loading ? (
           <LoadingState />
         ) : !carData || carData.length === 0 ? (
@@ -209,18 +194,16 @@ const HistoryPage = () => {
             {filteredCars.map((car, idx) => (
               <div key={car.bookingId || idx} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
                 <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6">
-                  {/* Car Image */}
                   <div className="flex-shrink-0">
-                    <Image 
+                    <Image
                       src={car.image ? `/${car.image}` : "/default-car.png"}
-                      width={160} 
-                      height={100} 
+                      width={160}
+                      height={100}
                       alt={car.name || "Car"}
                       className="rounded-lg object-cover"
                     />
                   </div>
 
-                  {/* Car Details */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between mb-2">
                       <h3 className="text-xl font-semibold text-gray-900 truncate">
@@ -230,7 +213,7 @@ const HistoryPage = () => {
                         {car.rentalStatus?.charAt(0).toUpperCase() + car.rentalStatus?.slice(1) || 'Completed'}
                       </span>
                     </div>
-                    
+
                     <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-3">
                       <span className="flex items-center gap-1">
                         <Car className="w-4 h-4" />
@@ -248,7 +231,6 @@ const HistoryPage = () => {
                     </div>
                   </div>
 
-                  {/* Price */}
                   <div className="flex-shrink-0 text-right">
                     <div className="text-2xl font-bold text-gray-900">
                       ₹{car.price || "N/A"}
@@ -261,7 +243,6 @@ const HistoryPage = () => {
           </div>
         )}
 
-        {/* Summary */}
         {carData && carData.length > 0 && (
           <div className="mt-8 bg-white rounded-xl shadow-sm p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Summary</h3>

@@ -38,7 +38,7 @@ const TermsAndConditions = () => {
             <li>Must provide valid credit card information</li>
             <li>Must pass identity verification process</li>
           </ul>
-          
+
           <h4 className="font-semibold text-gray-900">Account Registration:</h4>
           <ul className="list-disc pl-6 space-y-2">
             <li>You must provide accurate, current, and complete information</li>
@@ -61,7 +61,7 @@ const TermsAndConditions = () => {
             <li>Extensions must be approved in advance</li>
             <li>Vehicles must be returned during business hours unless otherwise arranged</li>
           </ul>
-          
+
           <h4 className="font-semibold text-gray-900">Vehicle Use Restrictions:</h4>
           <ul className="list-disc pl-6 space-y-2">
             <li>Vehicles may only be driven by authorized drivers</li>
@@ -70,7 +70,7 @@ const TermsAndConditions = () => {
             <li>Racing, stunts, or reckless driving is forbidden</li>
             <li>Vehicles cannot be used for commercial purposes</li>
           </ul>
-          
+
           <div className="bg-red-50 p-4 rounded-lg">
             <p className="text-sm text-red-800">
               <strong>Warning:</strong> Violation of vehicle use restrictions may result in immediate termination of rental agreement and additional penalties.
@@ -92,7 +92,7 @@ const TermsAndConditions = () => {
             <li>Late return fees: $25 per hour after grace period</li>
             <li>Cleaning fees apply for excessive mess or damage</li>
           </ul>
-          
+
           <h4 className="font-semibold text-gray-900">Payment Terms:</h4>
           <ul className="list-disc pl-6 space-y-2">
             <li>Payment is due at time of booking confirmation</li>
@@ -100,7 +100,7 @@ const TermsAndConditions = () => {
             <li>Final charges will be processed within 24 hours of return</li>
             <li>Disputed charges must be reported within 7 days</li>
           </ul>
-          
+
           <div className="bg-yellow-50 p-4 rounded-lg">
             <p className="text-sm text-yellow-800">
               <strong>Security Deposit:</strong> A security deposit of $200-$500 (depending on vehicle type) will be authorized on your credit card.
@@ -121,7 +121,7 @@ const TermsAndConditions = () => {
             <li>Personal injury protection may be required by law</li>
             <li>Your personal auto insurance may provide additional coverage</li>
           </ul>
-          
+
           <h4 className="font-semibold text-gray-900">Renter Liability:</h4>
           <ul className="list-disc pl-6 space-y-2">
             <li>You are responsible for all traffic violations and fines</li>
@@ -129,7 +129,7 @@ const TermsAndConditions = () => {
             <li>You must report accidents immediately to police and RentRider</li>
             <li>Failure to report incidents may void insurance coverage</li>
           </ul>
-          
+
           <div className="bg-green-50 p-4 rounded-lg">
             <p className="text-sm text-green-800">
               <strong>Protection:</strong> We recommend purchasing our comprehensive coverage package for maximum protection.
@@ -150,7 +150,7 @@ const TermsAndConditions = () => {
             <li>No refund for cancellations within 2 hours of pickup</li>
             <li>No-show bookings are non-refundable</li>
           </ul>
-          
+
           <h4 className="font-semibold text-gray-900">Cancellation by RentRider:</h4>
           <ul className="list-disc pl-6 space-y-2">
             <li>We may cancel for vehicle unavailability</li>
@@ -158,7 +158,7 @@ const TermsAndConditions = () => {
             <li>Alternative vehicle will be offered when possible</li>
             <li>We are not liable for consequential damages</li>
           </ul>
-          
+
           <h4 className="font-semibold text-gray-900">Refund Processing:</h4>
           <ul className="list-disc pl-6 space-y-2">
             <li>Refunds processed within 5-7 business days</li>
@@ -183,7 +183,7 @@ const TermsAndConditions = () => {
             <li>Transporting hazardous materials</li>
             <li>Exceeding vehicle capacity limits</li>
           </ul>
-          
+
           <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
             <p className="text-sm text-red-800">
               <strong>Legal Consequences:</strong> Violation of these terms may result in immediate termination of rental, legal action, and criminal charges.
@@ -204,7 +204,7 @@ const TermsAndConditions = () => {
             <li>Vehicle usage data is monitored for safety and security</li>
             <li>Payment information is processed securely</li>
           </ul>
-          
+
           <h4 className="font-semibold text-gray-900">Information Use:</h4>
           <ul className="list-disc pl-6 space-y-2">
             <li>Personal information is used solely for rental services</li>
@@ -212,7 +212,7 @@ const TermsAndConditions = () => {
             <li>Marketing communications require explicit consent</li>
             <li>Information is not sold to third parties</li>
           </ul>
-          
+
           <h4 className="font-semibold text-gray-900">Data Security:</h4>
           <ul className="list-disc pl-6 space-y-2">
             <li>Industry-standard encryption protects your data</li>
@@ -229,7 +229,7 @@ const TermsAndConditions = () => {
       content: (
         <div className="space-y-4">
           <p>RentRider's liability is limited to the maximum extent permitted by law.</p>
-          
+
           <h4 className="font-semibold text-gray-900">Limitations Include:</h4>
           <ul className="list-disc pl-6 space-y-2">
             <li>No liability for indirect or consequential damages</li>
@@ -238,7 +238,7 @@ const TermsAndConditions = () => {
             <li>No liability for delays or cancellations beyond our control</li>
             <li>Force majeure events exclude liability</li>
           </ul>
-          
+
           <div className="bg-gray-50 p-4 rounded-lg">
             <p className="text-sm text-gray-700">
               <strong>Important:</strong> Some jurisdictions do not allow limitation of liability for personal injury or property damage. These limitations may not apply to you.
@@ -259,14 +259,14 @@ const TermsAndConditions = () => {
             <li>Mediation may be required before legal action</li>
             <li>Arbitration clause may apply to certain disputes</li>
           </ul>
-          
+
           <h4 className="font-semibold text-gray-900">Governing Law:</h4>
           <ul className="list-disc pl-6 space-y-2">
             <li>These terms are governed by local jurisdiction laws</li>
             <li>Any legal action must be filed in appropriate courts</li>
             <li>Statute of limitations applies to all claims</li>
           </ul>
-          
+
           <div className="bg-blue-50 p-4 rounded-lg">
             <p className="text-sm text-blue-800">
               <strong>Contact Us:</strong> For disputes or questions about these terms, contact our legal department at legal@rentrider.com
@@ -279,7 +279,6 @@ const TermsAndConditions = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
       <div className="shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-12">
           <div className="text-center">
@@ -298,7 +297,6 @@ const TermsAndConditions = () => {
         </div>
       </div>
 
-      {/* Terms Content */}
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="space-y-4">
           {sections.map((section, index) => (
@@ -321,7 +319,7 @@ const TermsAndConditions = () => {
                   <ChevronDown className="w-5 h-5 text-gray-500" />
                 )}
               </button>
-              
+
               {activeSection === index && (
                 <div className="px-6 pb-6 border-t border-gray-100">
                   <div className="pt-4 text-gray-700 leading-relaxed">
@@ -334,7 +332,6 @@ const TermsAndConditions = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="bg-white border-t border-gray-200 py-12">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h3 className="text-xl font-semibold text-gray-900 mb-4">
@@ -344,7 +341,7 @@ const TermsAndConditions = () => {
             If you have any questions about these Terms and Conditions, please contact us:
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center text-sm text-gray-700">
-          <button className="bg-white text-yellow-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors hover:cursor-pointer text-xl">
+            <button className="bg-white text-yellow-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors hover:cursor-pointer text-xl">
               <a href='mailto:support@rentrider.com'>Email Support</a>
             </button>
           </div>

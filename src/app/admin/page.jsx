@@ -18,7 +18,7 @@ const Dashboard = () => {
     const [car, setCar] = useState({});
     const [upcomingBookingcount, setUpcomingBookingcount] = useState(null);
     const router = useRouter();
-    console.log(userInfo)
+
     useEffect(() => {
         if (!userInfo?._id) return;
         const fetchData = async () => {
@@ -29,9 +29,7 @@ const Dashboard = () => {
                 setTotalCount(data.totalRentals);
                 setUpcomingBookingcount(data.pendingRentals);
                 setCurrentRentals(data.currentRentals);
-            } catch (err) {
-                console.error("Error:", err);
-            }
+            } catch (err) { }
         };
         fetchData();
     }, [userInfo]);
@@ -52,7 +50,7 @@ const Dashboard = () => {
         })
             .then((res) => res.json())
             .then((data) => setUserData(data.user))
-            .catch((err) => console.error("Error:", err));
+            .catch(() => { });
     }, [token]);
 
     useEffect(() => {
@@ -66,7 +64,7 @@ const Dashboard = () => {
         })
             .then((res) => res.json())
             .then((data) => setUserInfo(data.user))
-            .catch((err) => console.error("Error:", err));
+            .catch(() => { });
     }, [token]);
 
     const slugs = userData?.bookings.map(b => b.slug).join(",");
@@ -76,9 +74,7 @@ const Dashboard = () => {
                 const response = await fetch(`/api/getcar?slug=${slugs}`);
                 const data = await response.json();
                 setCar(data.car || {});
-            } catch (error) {
-                console.error("Failed to fetch car details", error);
-            }
+            } catch (_) { }
         };
         fetchCar();
     }, [slugs]);
@@ -100,9 +96,7 @@ const Dashboard = () => {
                     })
                 );
                 setCurRentData(cars);
-            } catch (error) {
-                console.error("Failed to fetch all car details", error);
-            }
+            } catch (_) { }
         };
         fetchAllCars();
     }, [currentRentals]);
@@ -116,19 +110,15 @@ const Dashboard = () => {
 
     return (
         <div className="flex min-h-screen">
-            {/* Sidebar */}
             <aside className="w-64 bg-white text-black shadow-lg">
                 <Sidebar />
             </aside>
 
-            {/* Main Content */}
             <main className="flex-1 p-6">
-                {/* Header */}
                 <header className="flex justify-center mb-12">
                     <h1 className="text-4xl font-bold text-yellow-500 underline">Dashboard</h1>
                 </header>
 
-                {/* Greeting and Stats */}
                 <section className="mb-10">
                     <h2 className="text-2xl font-semibold mb-4">
                         Hello, {userInfo?.username || "Loading..."}
@@ -152,10 +142,7 @@ const Dashboard = () => {
                     </div>
                 </section>
 
-
-                {/* Dashboard Grid */}
                 <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    {/* Upcoming Bookings */}
                     <div className="lg:col-span-2">
                         <h3 className="text-xl font-semibold mb-3">Upcoming bookings</h3>
                         {userData?.bookings && userData.bookings.length > 0 ? (
@@ -173,7 +160,6 @@ const Dashboard = () => {
                         )}
                     </div>
 
-                    {/* Quick Actions */}
                     <div>
                         <h3 className="text-xl font-semibold mb-3">Quick actions</h3>
                         <div className="flex flex-col gap-3">
@@ -188,11 +174,9 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    {/* Active Rentals */}
                     <div className="lg:col-span-2">
                         <div className="flex justify-between items-center mb-3">
                             <h3 className="text-xl font-semibold">Active rentals</h3>
-
                         </div>
 
                         {countCurrentRentals !== 0 && curRentData && curRentData.length > 0 ? (
@@ -216,7 +200,6 @@ const Dashboard = () => {
                     <DangerButton
                         icon={<Trash />}
                         label="Delete Account"
-
                         onClick={() => {
                             router.push("/deleteAccount")
                         }}
@@ -229,7 +212,6 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-// Reusable Components
 const Card = ({ children }) => (
     <div className="bg-white text-black rounded-xl shadow p-4">{children}</div>
 );

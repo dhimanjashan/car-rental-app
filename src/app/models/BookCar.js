@@ -5,11 +5,11 @@ const bookingSchema = new mongoose.Schema({
   pickupdate: String,
   dropoffdate: String, bookedOn: {
     type: String,
-    default: () => new Date().toISOString().split("T")[0], // "YYYY-MM-DD"
+    default: () => new Date().toISOString().split("T")[0],
   }, location: String,
-  image:String,
-  name:String,
-  price:Number,
+  image: String,
+  name: String,
+  price: Number,
 });
 
 const bookCarSchema = new mongoose.Schema({

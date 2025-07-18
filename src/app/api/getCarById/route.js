@@ -1,15 +1,20 @@
 import connectToMongo from "../../../app/middleware/mongoose";
-import Car from "../../../app/models/Car"
+import Car from "../../../app/models/Car";
 
 export async function GET(req) {
   try {
     const { searchParams } = new URL(req.url);
     const carId = searchParams.get("carId");
-    console.log("carId",carId)
+
+    if (!carId) {
+      return new Response(JSON.stringify({ error: "Missing carId" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
 
     await connectToMongo();
     const car = await Car.findById(carId);
-    console.log("Cardata",car)
 
     return new Response(JSON.stringify({ car }), {
       status: 200,

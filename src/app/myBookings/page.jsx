@@ -5,9 +5,8 @@
 import Image from "next/image";
 import { FaCalendarAlt, FaMapMarkerAlt, FaCar } from "react-icons/fa";
 import React, { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import Link from "next/link";
-
 
 const BookingsPage = () => {
   const searchParams = useSearchParams();
@@ -22,12 +21,11 @@ const BookingsPage = () => {
         const response = await fetch(url);
         const data = await response.json();
         setBookingcar({ bookings: data.car?.bookings || [] });
-      } catch (error) {
-        console.error("Failed to fetch car details", error);
-      }
+      } catch (error) { }
     };
     fetchCar();
   }, [email]);
+
   return (
     <main className="min-h-screen text-white py-10 px-6">
       <div className="max-w-6xl mx-auto">
@@ -99,4 +97,5 @@ const BookingsPage = () => {
     </main>
   );
 }
+
 export default BookingsPage;

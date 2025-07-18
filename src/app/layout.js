@@ -22,23 +22,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.className} antialiased min-h-screen`}
-      >  <UserProvider>
-        <CartProvider>
-        <ConditionalTopLoader 
-        
-        />
-      
-        <Providers>
-
-        <Navbar />
-        <Toaster position="bottom-center" />     
-       
-          {children}     
-         
-        </Providers>
-        <Footer />
-        </CartProvider>
+        className={`${outfit.className} antialiased min-h-screen`}>
+        <UserProvider>
+          <CartProvider>
+            <ConditionalTopLoader />
+            <Providers>
+              <Navbar />
+              <Toaster position="bottom-center" />
+              {children}
+            </Providers>
+            <Footer />
+          </CartProvider>
         </UserProvider>
       </body>
     </html>

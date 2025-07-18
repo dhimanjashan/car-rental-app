@@ -6,7 +6,6 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen px-6 py-16 md:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Left Content */}
         <div>
           <h1 className="text-5xl md:text-6xl font-extrabold text-yellow-300 mb-6">
             About RentRider

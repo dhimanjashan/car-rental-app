@@ -2,15 +2,15 @@
 import React, { useState } from 'react'
 import Sidebar from "../components/sidebar"
 import Link from 'next/link'
-import { 
-  Calendar, 
-  CreditCard, 
-  AlertCircle, 
-  CheckCircle, 
-  XCircle, 
-  Clock, 
-  RefreshCw, 
-  Phone, 
+import {
+  Calendar,
+  CreditCard,
+  AlertCircle,
+  CheckCircle,
+  XCircle,
+  Clock,
+  RefreshCw,
+  Phone,
   MessageCircle,
   ChevronDown,
   ChevronUp,
@@ -106,13 +106,13 @@ const BookingIssuesPage = () => {
         "Check spam/junk email folders",
         "Verify email address is correct",
         "Check your account dashboard",
-        "Contact support with payment transaction ID",
+        "Contact support with payment transaction ID"
       ]
     }
   ]
 
   const getPriorityColor = (priority) => {
-    switch(priority) {
+    switch (priority) {
       case 'high': return 'bg-red-100 text-red-800 border-red-200'
       case 'medium': return 'bg-yellow-100 text-yellow-800 border-yellow-200'
       case 'low': return 'bg-green-100 text-green-800 border-green-200'
@@ -121,7 +121,7 @@ const BookingIssuesPage = () => {
   }
 
   const getPriorityIcon = (priority) => {
-    switch(priority) {
+    switch (priority) {
       case 'high': return <AlertCircle className="w-4 h-4" />
       case 'medium': return <Clock className="w-4 h-4" />
       case 'low': return <CheckCircle className="w-4 h-4" />
@@ -131,7 +131,7 @@ const BookingIssuesPage = () => {
 
   const filteredIssues = commonIssues.filter(issue => {
     const matchesSearch = issue.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         issue.description.toLowerCase().includes(searchTerm.toLowerCase())
+      issue.description.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesCategory = selectedCategory === 'all' || issue.category === selectedCategory
     return matchesSearch && matchesCategory
   })
@@ -139,15 +139,12 @@ const BookingIssuesPage = () => {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      
       <main className="flex-1 p-8">
-        {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">Booking Issues</h1>
           <p className="text-gray-400">Find solutions to common booking problems and get help quickly</p>
         </div>
 
-        {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white">
             <h3 className="text-xl font-semibold mb-2">Need Immediate Help?</h3>
@@ -174,7 +171,6 @@ const BookingIssuesPage = () => {
           </div>
         </div>
 
-        {/* Search and Filter */}
         <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="flex-1 relative">
@@ -192,11 +188,10 @@ const BookingIssuesPage = () => {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-lg font-medium whitespace-nowrap transition-colors ${
-                    selectedCategory === category.id 
-                      ? 'bg-yellow-500 text-white' 
+                  className={`flex items-center gap-2 px-4 py-3 rounded-lg font-medium whitespace-nowrap transition-colors ${selectedCategory === category.id
+                      ? 'bg-yellow-500 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  } hover:cursor-pointer`}
+                    } hover:cursor-pointer`}
                 >
                   {category.icon}
                   {category.name}
@@ -206,10 +201,8 @@ const BookingIssuesPage = () => {
           </div>
         </div>
 
-        {/* Common Issues */}
         <div className="space-y-4">
           <h2 className="text-2xl font-bold mb-6">Common Booking Issues</h2>
-          
           {filteredIssues.length === 0 ? (
             <div className="bg-white rounded-xl shadow-sm p-8 text-center">
               <h3 className="text-xl font-semibold text-gray-700 mb-2">No issues found</h3>
@@ -218,7 +211,7 @@ const BookingIssuesPage = () => {
           ) : (
             filteredIssues.map(issue => (
               <div key={issue.id} className="bg-white rounded-xl shadow-sm overflow-hidden">
-                <div 
+                <div
                   className="p-6 cursor-pointer hover:bg-gray-50 transition-colors"
                   onClick={() => toggleExpanded(issue.id)}
                 >
@@ -234,8 +227,8 @@ const BookingIssuesPage = () => {
                       <p className="text-gray-600">{issue.description}</p>
                     </div>
                     <div className="ml-4">
-                      {expandedItems[issue.id] ? 
-                        <ChevronUp className="w-5 h-5 text-gray-400" /> : 
+                      {expandedItems[issue.id] ?
+                        <ChevronUp className="w-5 h-5 text-gray-400" /> :
                         <ChevronDown className="w-5 h-5 text-gray-400" />
                       }
                     </div>
@@ -247,7 +240,6 @@ const BookingIssuesPage = () => {
                     <div className="mt-4">
                       <h4 className="font-semibold text-gray-900 mb-2">Solution:</h4>
                       <p className="text-gray-700 mb-4">{issue.solution}</p>
-                      
                       <h4 className="font-semibold text-gray-900 mb-2">Step-by-step guide:</h4>
                       <ol className="space-y-2">
                         {issue.steps.map((step, index) => (
@@ -267,7 +259,6 @@ const BookingIssuesPage = () => {
           )}
         </div>
 
-        {/* Still Need Help */}
         <div className="mt-12 bg-gray-900 rounded-xl p-8 text-center text-white">
           <h2 className="text-2xl font-bold mb-4">Still need help?</h2>
           <p className="text-gray-300 mb-6">

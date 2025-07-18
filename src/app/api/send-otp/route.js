@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import User from '../../../app/models/User'; // ✅ Import your User model
+import User from '../../../app/models/User';
 import Otp from '../../../app/models/Otp';
 import connectToMongo from '../../middleware/mongoose';
 
@@ -11,9 +11,8 @@ export async function POST(req) {
       return new Response(JSON.stringify({ error: 'Email is required' }), { status: 400 });
     }
 
-    await connectToMongo(); // ✅ Connect to DB
+    await connectToMongo();
 
-    // ✅ Check if user exists
     const existingUser = await User.findOne({ email });
 
     if (!existingUser) {
@@ -21,15 +20,11 @@ export async function POST(req) {
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes from now
+    const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
-    // ✅ Delete any existing OTPs for this email
     await Otp.deleteMany({ email });
-
-    // ✅ Save new OTP
     await Otp.create({ email, otp, expiresAt });
 
-    // ✅ Send OTP via nodemailer
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
