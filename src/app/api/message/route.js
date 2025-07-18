@@ -1,5 +1,5 @@
-import Message from "@/app/models/Message";
-import connectToMongo from "@/app/middleware/mongoose";
+import connectToMongo from "../../../app/middleware/mongoose";
+import Message from "../../../app/models/Message"
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
